@@ -51,8 +51,7 @@ class UnloadModelNode:
             torch.cuda.ipc_collect()
         except:
             print("   - Unable to clear cache")
-        #time.sleep(2) # why?
-        return (list(kwargs.values()))
+        return (kwargs.get("value"),)
 
 class UnloadAllModelsNode:
     @classmethod
@@ -81,8 +80,7 @@ class UnloadAllModelsNode:
             torch.cuda.ipc_collect()
         except:
             print("   - Unable to clear cache")
-        #time.sleep(2) # why?
-        return (list(kwargs.values()))
+        return (kwargs.get("value"),)
 
 
 NODE_CLASS_MAPPINGS = {
