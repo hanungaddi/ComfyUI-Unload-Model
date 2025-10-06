@@ -71,8 +71,9 @@ class UnloadAllModelsNode:
     def route(self, **kwargs):
         print("Unload Model:")
         print(" - Unloading all models...")
-        model_management.unload_all_models()
-        model_management.soft_empty_cache(True)
+        model_management.cleanup_models() # Delete all models in VRAM & RAM
+        # model_management.unload_all_models()
+        # model_management.soft_empty_cache(True)
         try:
             print(" - Clearing Cache...")
             gc.collect()
